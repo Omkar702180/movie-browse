@@ -1,0 +1,30 @@
+<div class="container px-4 sm:px-10 md:px-16 lg:px-20 mt-14 mb-20">
+  <p class="font-semibold text-lg sm:text-xl md:text-2xl my-3 ml-3 text-gray-800">{{title}}</p>
+  <div #swiperContainer class="swiper-container">
+    <div class="swiper-wrapper">
+      <ng-container *ngFor="let movie of videoContent">
+        <div class="swiper-slide relative">
+          <img [src]="movie.poster_path | image" alt="" class="w-full h-auto" (click)="navigateToDetail(movie.id)" />
+          <div class="desc p-2 bg-white bg-opacity-75">
+            <div class="flex justify-between">
+              <span class="text-sm sm:text-base md:text-lg flex flex-wrap font-bold" (click)="navigateToDetail(movie.id)">{{movie.original_title}}</span>
+              <a class="text-white-500" (click)="saveToLocalStorage(movie)">
+                <svg width="15" viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg" class="svgIcon">
+                  <path d="M46 62.0085L46 3.88139L3.99609 3.88139L3.99609 62.0085L24.5 45.5L46 62.0085Z" stroke="white"
+                    stroke-width="7" fill="green"></path>
+                </svg>
+              </a>
+            </div>
+            <p class="text-xs my-3">{{movie.overview | description:120}}</p>
+            <div class="py-3 absolute w-[90%] bottom-1">
+              <p class="text-xs flex justify-between items-center">
+                <span class="text-green-500">Release Year: {{movie.release_date}}</span>
+                <i class="fa fa-2x fa-chevron-circle-down" aria-hidden="true"></i>
+              </p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+.swiper-slide {
+  transition: all 300ms ease-in-out;
+  border-radius: 5px;
+  cursor: pointer;
+  perspective: 1000px;
+  /* Removed margin here to avoid extra gaps */
+}
+
+.desc {
+  transition: all 300ms ease-in-out;
+  background-color: #181818c4;
+  height: 170px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.desc:hover {
+  transition: all 300ms ease-in-out;
+}
+
+.desc.tv {
+  height: 60px;
+}
+
+.swiper-slide img {
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  height: 300px !important;
+  object-fit: cover;
+  transition: transform 500ms ease-in-out;
+}
+
+.swiper-slide img:active {
+  cursor: grabbing;
+}
+
+.swiper-slide:hover {
+  transform: scale(1.2) rotateY(10deg);
+  transition: all 500ms ease-in-out;
+  z-index: 1;
+}
+
+.swiper-slide:hover img {
+  transition: transform 500ms ease-in-out;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+}
+
+.swiper-slide {
+  transform-origin: center center;
+}
+
+.swiper-slide:hover {
+  transform: scale(1.2) rotateY(10deg);
+  transform-origin: center center;
+}
+
+@media screen and (max-width: 599px) {
+  .swiper-slide img {
+    max-width: 100%;
+    /* Ensure no extra margin causing single slide issue */
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .swiper-slide img {
+    max-width: 100%;
+    border-radius: 2px;
+    /* Ensure no extra margin causing single slide issue */
+  }
+}

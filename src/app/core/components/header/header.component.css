@@ -1,0 +1,83 @@
+/* Custom CSS for Neomorphism */
+.neomorphism {
+    box-shadow: 0px 1px 10px rgb(0 0 0 / 19%), 0px -1px 10px rgb(255 255 255);
+}
+
+.nav-link {
+    position: relative;
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, #ff0073, #ff5500, #ff0000);
+    background-size: 200% 100%;
+    transition: all 0.3s ease;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    background-position: 100% 0;
+}
+
+.nav-link:hover {
+    color: #ff003c;
+}
+
+#mobile-menu {
+    background-color: #f9fafb;
+    border-radius: 0rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#mobile-menu nav ul li {
+    margin-bottom: 0.5rem;
+}
+
+#mobile-menu .text-gray-800 a {
+    color: #374151;
+}
+
+#mobile-menu .text-gray-800 a:hover {
+    background-color: #edf2f7;
+    color: #4a5568;
+}
+
+#mobile-menu .text-red-500 {
+    color: #f56565;
+}
+
+#mobile-menu .text-red-500:hover {
+    background-color: #fed7d7;
+    color: #e53e3e;
+}
+
+.border-b {
+    /* Bottom border styles */
+    border-bottom-width: 1px;
+    /* Border thickness */
+    border-bottom-style: solid;
+    /* Solid border style */
+}
+
+.border-gray-300 {
+    /* Border color */
+    border-color: #d1d5db;
+    /* Light gray border color */
+}
+
+@media (max-width: 786px) {
+    .mnavs {
+        display: none;
+    }
+}

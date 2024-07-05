@@ -1,0 +1,46 @@
+<div class="flex align-baseline justify-center gap-3 mx-2">
+  <form class="w-full mx-auto mt-3" (submit)="preventSubmit($event)">
+    <div class="relative margindata">
+      <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+          fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+        </svg>
+      </div>
+      <input type="search" id="default-search"
+        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Search Movies Names..." required (input)="onSearch($event)"
+        (keydown.enter)="preventEnter($event)" />
+    </div>
+  </form>
+</div>
+<div class="px-4 sm:px-10 md:px-16 lg:px-20 mt-5 mb-20">
+  <div #swiperContainer class="">
+    <div class="grid grid-cols-7 gap-4">
+      <ng-container *ngFor="let movie of videoContent">
+        <div class="swiper-slide relative">
+          <img [src]="movie.poster_path | image" alt="" class="w-full h-auto" />
+          <div class="desc p-2 bg-white bg-opacity-75">
+            <div class="flex justify-between">
+              <span class="text-sm sm:text-base md:text-lg flex flex-wrap font-bold">{{movie.original_title}}</span>
+              <a class="text-white-500" (click)="removeMovie(movie.id)">
+                <svg width="15" viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg" class="svgIcon">
+                  <path d="M46 62.0085L46 3.88139L3.99609 3.88139L3.99609 62.0085L24.5 45.5L46 62.0085Z" 
+                        stroke="white" stroke-width="7" fill="green"></path>
+                </svg>
+              </a>                          
+            </div>
+            <p class="text-xs my-3">{{movie.overview | description:120}}</p>
+            <div class="py-3 absolute w-[90%] bottom-1">
+              <p class="text-xs flex justify-between items-center">
+                <span class="text-green-500">Release Year: {{movie.release_date}}</span>
+                <i class="fa fa-2x fa-chevron-circle-down" aria-hidden="true"></i>
+              </p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

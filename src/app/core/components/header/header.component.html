@@ -1,0 +1,47 @@
+<header class="bg-white shadow-md sticky top-0 z-50 p-2 rounded-lg neomorphism">
+    <div class="container mx-auto flex items-center justify-between">
+      <a href="home" class="nav-link capitalize cursor-pointer">
+        <img width="80" src="/assets/logo.png" alt="logo" class="transform hover:scale-110 transition-transform duration-300">
+      </a>
+      <nav class="hidden md:flex space-x-6">
+        <ul *ngFor="let item of navList">
+          <li>
+            <a (click)="navigateTo(item)" class="nav-link capitalize cursor-pointer">{{ item }}</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="mnavs">
+        <div class="text-gray-800 flex items-center gap-4 md:flex">
+          <div class="flex items-center gap-2">
+            <a>Welcome&nbsp;{{ userName }}</a>
+            <img [src]="userImg" alt="" class="w-8 h-8 rounded-full border-2 border-gray-300">
+          </div>
+        </div>
+      </div>
+      <button (click)="toggleMobileMenu()" class="md:hidden flex items-center text-gray-800" id="menu-button">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="md:hidden hidden" id="mobile-menu">
+      <nav class="px-2 pt-2 pb-4 space-y-4 sm:px-3">
+        <ul *ngFor="let item of navList">
+          <li>
+            <a (click)="navigateTo(item)" class="block px-4 py-2 rounded-md text-gray-800 hover:bg-gray-100 border-b border-gray-300 capitalize cursor-pointer">
+              {{ item }}
+            </a>
+          </li>
+        </ul>
+        <div class="text-gray-800 flex items-center justify-center md:hidden">
+          <div class="flex items-center gap-2">
+            <a class="block px-4 py-2 rounded-md text-gray-800 hover:bg-gray-100 border-b border-gray-300">
+              Welcome&nbsp;{{ userName }}
+            </a>
+            <img [src]="userImg" alt="" class="w-8 h-8 rounded-full border-2 border-gray-300">
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
