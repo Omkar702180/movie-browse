@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ImagePipe } from '../../pipes/image.pipe';
 import { DescriptionPipe } from '../../pipes/description.pipe';
+import { Router } from '@angular/router'; // Import Router
 
 @Component({
   selector: 'app-my-list',
@@ -16,6 +17,8 @@ export class MyListComponent implements OnInit {
   ngOnInit(): void {
     console.log('Video Content:', this.videoContent); // Debugging statement
   }
+
+  constructor(private router: Router) {}
 
   onSearch(event: Event): void {
     const target = event.target as HTMLInputElement;
@@ -54,4 +57,8 @@ export class MyListComponent implements OnInit {
       keyboardEvent.preventDefault();
     }
   }
-}
+  
+  navigateToDetail(movieId: number): void {
+    this.router.navigate(['/detail', movieId]);
+  }
+} 

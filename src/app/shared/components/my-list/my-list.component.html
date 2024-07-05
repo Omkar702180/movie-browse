@@ -20,10 +20,10 @@
     <div class="grid grid-cols-7 gap-4">
       <ng-container *ngFor="let movie of videoContent">
         <div class="swiper-slide relative">
-          <img [src]="movie.poster_path | image" alt="" class="w-full h-auto" />
+          <img [src]="movie.poster_path | image" alt="" class="w-full h-auto" (click)="navigateToDetail(movie.id)" />
           <div class="desc p-2 bg-white bg-opacity-75">
             <div class="flex justify-between">
-              <span class="text-sm sm:text-base md:text-lg flex flex-wrap font-bold">{{movie.original_title}}</span>
+              <span class="text-sm sm:text-base md:text-lg flex flex-wrap font-bold" (click)="navigateToDetail(movie.id)">{{movie.original_title}}</span>
               <a class="text-white-500" (click)="removeMovie(movie.id)">
                 <svg width="15" viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg" class="svgIcon">
                   <path d="M46 62.0085L46 3.88139L3.99609 3.88139L3.99609 62.0085L24.5 45.5L46 62.0085Z" 
@@ -43,4 +43,4 @@
       </ng-container>
     </div>
   </div>
-</div>
+</div> 
