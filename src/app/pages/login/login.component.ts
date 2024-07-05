@@ -1,6 +1,7 @@
+// login.component.ts
 declare var google: any;
 
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   private router = inject(Router);
+  private cdr = inject(ChangeDetectorRef);
 
   ngOnInit(): void {
     if (typeof google !== 'undefined') {
@@ -43,7 +45,11 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("loggedInUser", JSON.stringify(payLoad));
       }
       // Navigate to home/browse
-      this.router.navigate(['browse']);
+      this.router.navigate(['browse']).then(() => {
+        this.cdr.detectChanges();
+        // Reload the page after navigation
+        window.location.reload();
+      });
     }
   }
 }
